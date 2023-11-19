@@ -16,8 +16,8 @@ import lombok.Data;
 @Table(name="direcciones")
 public class Direccion {
 
-    @Column(name="idDireccion")
     @Id
+    @Column(name="iddireccion")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDireccion;
 
@@ -25,9 +25,8 @@ public class Direccion {
 
     private String ciudad;
 
-    private String dni;
 
-    // @OneToOne
-    // @JoinColumn(name="dni", referencedColumnName = "dni")
-    // private Cliente cliente;
+    @OneToOne
+    @JoinColumn(name = "dni")
+    private Cliente cliente;
 }

@@ -3,6 +3,8 @@ package hn.project.bankabc.Models;
 import java.util.Date;
 import java.util.LinkedList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +22,8 @@ import lombok.Data;
 @Data
 public class Cuenta {
     
+    private static final String cascadeType = null;
+
     @Id
     @Column(name="idcuenta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,21 +32,20 @@ public class Cuenta {
     @Column(name="tipocuenta")
     private String tipoCuenta;
 
-    @Column(name="montoMinimo")
+    @Column(name="montominimo")
     private double montoMinimo;
 
     private double saldo;
 
     @Column(name="fechaapertura")
     private Date fechaApertura;
-    
-    private String dni;
 
-    // @ManyToOne
-    // @JoinColumn(name="dni", referencedColumnName = "dni")
-    // private Cliente cliente;
 
-    // @OneToMany(mappedBy = "idCuenta", cascade = CascadeType.ALL)
-    // private LinkedList<Movimiento> movimiento = new LinkedList<Movimiento>();
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="dni", referencedColumnName = "dni")
+    private Cliente cliente;
 
+    @OneToMany(mappedBy="cuenta", cascade = CascadeType.ALL)
+    private LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
 }

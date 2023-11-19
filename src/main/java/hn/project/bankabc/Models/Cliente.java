@@ -1,7 +1,9 @@
 package hn.project.bankabc.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,11 +34,11 @@ public class Cliente {
     @Column(name="fechaingreso")
     private Date fechaIngreso;
 
-    // @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
-    // private Direccion direccion;
 
-    // @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    // private LinkedList<Cuenta> cuenta = new LinkedList<Cuenta>();
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private Direccion direccion;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private LinkedList<Cuenta> cuentasList = new LinkedList<Cuenta>();
 
 }

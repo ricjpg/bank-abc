@@ -33,10 +33,8 @@ public class Movimiento {
     @Column(name="tipomovimiento")
     private String tipoMovimiento;
 
-    @Column(name="idcuenta")
-    private int idCuenta;
 
-    // @ManyToOne
-    // @JoinColumn(name="idCuenta", referencedColumnName="idCuenta")
-    // private Cuenta cuenta;
+    @ManyToOne
+    @JoinColumn(name="idCuenta", referencedColumnName="idCuenta")
+    private Cuenta cuenta;
 }
