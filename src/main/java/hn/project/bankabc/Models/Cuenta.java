@@ -1,7 +1,8 @@
 package hn.project.bankabc.Models;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,8 +22,6 @@ import lombok.Data;
 @Table(name="cuentas")
 @Data
 public class Cuenta {
-    
-    private static final String cascadeType = null;
 
     @Id
     @Column(name="idcuenta")
@@ -47,5 +46,5 @@ public class Cuenta {
     private Cliente cliente;
 
     @OneToMany(mappedBy="cuenta", cascade = CascadeType.ALL)
-    private LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
+    private List<Movimiento> movimientos = new ArrayList<>();
 }

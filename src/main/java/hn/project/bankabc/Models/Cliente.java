@@ -2,7 +2,6 @@ package hn.project.bankabc.Models;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -39,6 +38,6 @@ public class Cliente {
     private Direccion direccion;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private LinkedList<Cuenta> cuentasList = new LinkedList<Cuenta>();
+    private List<Cuenta> cuentas = new ArrayList<>();
 
 }

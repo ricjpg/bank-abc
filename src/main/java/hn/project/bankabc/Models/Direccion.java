@@ -1,5 +1,7 @@
 package hn.project.bankabc.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Direccion {
 
     private String ciudad;
 
-
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "dni")
     private Cliente cliente;
